@@ -1,0 +1,5 @@
+en:
+  theme_metadata:
+    description: "Discourse Fireworks"
+    settings:
+      example_setting: "Add fireworks to Discourse"

@@ -1,5 +1,8 @@
-<script type="text/discourse-plugin" version="0.8">
-  if (settings.use_tsParticles_fireworks) {
+import { apiInitializer } from "discourse/lib/api";
+
+export default apiInitializer((/* api */) => {
+
+if (settings.use_tsParticles_fireworks) {
     
     const tsParticlesCdn = document.createElement("script");
     tsParticlesCdn.src = "https://cdn.jsdelivr.net/npm/@tsparticles/fireworks@3.7.1/tsparticles.fireworks.bundle.min.js";
@@ -37,5 +40,6 @@
         mainSection.insertBefore(fireworksDiv, mainSection.firstChild);
       }
     });
-  }
-</script>
+  }  
+
+});
