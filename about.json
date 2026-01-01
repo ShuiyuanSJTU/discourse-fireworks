@@ -1,7 +1,12 @@
 {
   "name": "discourse-fireworks",
-  "about_url": "https://meta.discourse.org/t/fireworks-component/174598",
-  "license_url": "https://github.com/MeghnaAJ/discourse-fireworks/blob/master/LICENSE",
-  "author": "Meghna",
-  "component": true
+  "component": true,
+  "authors": "Meghna Lilly",
+  "about_url": "https://github.com/Lillinator/discourse-fireworks/blob/main/README.md",
+  "license_url": "https://github.com/Lillinator/discourse-fireworks/blob/main/LICENSE",
+  "theme_version": "2.0.0",
+  "minimum_discourse_version": null,
+  "maximum_discourse_version": null,
+  "assets": {},
+  "modifiers": {}
 }
