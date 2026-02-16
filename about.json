@@ -7,6 +7,8 @@
   "theme_version": "2.0.0",
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
-  "assets": {},
-  "modifiers": {}
+  "modifiers": {},
+  "assets": {
+    "tsparticles_js": "assets/tsparticles.fireworks.bundle.min.js"
+  }
 }

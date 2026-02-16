@@ -3,30 +3,23 @@ import { apiInitializer } from "discourse/lib/api";
 export default apiInitializer((/* api */) => {
 
 if (settings.use_tsParticles_fireworks) {
-    
     const tsParticlesCdn = document.createElement("script");
-    tsParticlesCdn.src = "https://cdn.jsdelivr.net/npm/@tsparticles/fireworks@3.7.1/tsparticles.fireworks.bundle.min.js";
+    tsParticlesCdn.src = settings.theme_uploads.tsparticles_js;
     document.head.appendChild(tsParticlesCdn);
-    if (settings.tsParticles_fireworks_sound_enabled == true) {
-      tsParticlesCdn.onload = function() {
-        (async () => {
-          await fireworks({
-            rate: parseInt(settings.tsParticles_fireworks_rate),
-            sounds: true,
-          });
-        })();
-      }
-    } else {
-      tsParticlesCdn.onload = function() {
-        (async () => {
-          await fireworks({
-            rate: parseInt(settings.tsParticles_fireworks_rate),
-            sounds: false,
-          });
-        })();
-      }
-    }
-  
+    tsParticlesCdn.onload = function () {
+      // eslint-disable-next-line no-undef
+      fireworks({
+        rate: parseInt(settings.tsParticles_fireworks_rate, 10),
+        sounds: !!settings.tsParticles_fireworks_sound_enabled,
+      });
+      setTimeout(() => {
+        const fireworksContainer = document.getElementById('fireworks');
+        if (fireworksContainer) {
+          fireworksContainer.style.opacity = 1;
+        }
+      }, 100);
+    };
+
     document.addEventListener("DOMContentLoaded", function() {
       // Select the fireworks div
       const fireworksDiv = document.getElementById('fireworks');
