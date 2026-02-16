@@ -1,0 +1,10 @@
+/* For tsParticles fireworks */
+div#fireworks {
+  z-index: 999999999999;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s;
+}

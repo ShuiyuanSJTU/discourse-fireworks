@@ -6,89 +6,90 @@
 */
 @import "animation";
 @import "functions";
+@if $use_tsParticles_fireworks == "false" {
+  @if $firework_mobile_particules != "0" {
+    $particles: to-number($firework_mobile_particules);
+    $particule-size: #{$firework_mobile_particule_size}px;
+    $width: to-number($firework_mobile_width);
+    $height: to-number($firework_mobile_height);
+    $gravity: #{$firework_mobile_gravity}px;
 
-@if $firework_mobile_particules != "0" {
-  $particles: to-number($firework_mobile_particules);
-  $particule-size: #{$firework_mobile_particule_size}px;
-  $width: to-number($firework_mobile_width);
-  $height: to-number($firework_mobile_height);
-  $gravity: #{$firework_mobile_gravity}px;
+    // Create the explosion...
+    $box-shadow: ();
+    $box-shadow2: ();
 
-  // Create the explosion...
-  $box-shadow: ();
-  $box-shadow2: ();
-
-  @for $i from 0 through $particles {
-    $box-shadow: $box-shadow,
-      random($width)-$width /
-        2 +
-        px
-        random($height)-$height /
-        1.2 +
-        px
-        hsl(random(360), 100, 50);
-    $box-shadow2: $box-shadow2, 0 0 #fff;
-  }
-
-  .fireworks > .before,
-  .fireworks > .after {
-    position: absolute;
-    width: $particule-size;
-    height: $particule-size;
-    border-radius: 50%;
-    box-shadow: $box-shadow2;
-    @include animation(
-      (
-        3s bang ease-out infinite backwards,
-        3s gravity ease-in infinite backwards,
-        10s position linear infinite backwards
-      )
-    );
-  }
-
-  .fireworks > .after {
-    @include animation-delay((1.25s, 1.25s, 1.25s));
-    @include animation-duration((1.25s, 1.25s, 6.25s));
-  }
-
-  @include keyframes(bang) {
-    to {
-      box-shadow: $box-shadow;
+    @for $i from 0 through $particles {
+      $box-shadow: $box-shadow,
+        random($width)-$width /
+          2 +
+          px
+          random($height)-$height /
+          1.2 +
+          px
+          hsl(random(360), 100, 50);
+      $box-shadow2: $box-shadow2, 0 0 #fff;
     }
-  }
 
-  @include keyframes(gravity) {
-    to {
-      @include transform(translateY($gravity));
-      opacity: 0;
+    .fireworks > .before,
+    .fireworks > .after {
+      position: absolute;
+      width: $particule-size;
+      height: $particule-size;
+      border-radius: 50%;
+      box-shadow: $box-shadow2;
+      @include animation(
+        (
+          3s bang ease-out infinite backwards,
+          3s gravity ease-in infinite backwards,
+          10s position linear infinite backwards
+        )
+      );
     }
-  }
 
-  @include keyframes(position) {
-    0%,
-    19.9% {
-      margin-top: 15%;
-      margin-left: 40%;
+    .fireworks > .after {
+      @include animation-delay((1.25s, 1.25s, 1.25s));
+      @include animation-duration((1.25s, 1.25s, 6.25s));
     }
-    20%,
-    39.9% {
-      margin-top: 15%;
-      margin-left: 30%;
+
+    @include keyframes(bang) {
+      to {
+        box-shadow: $box-shadow;
+      }
     }
-    40%,
-    59.9% {
-      margin-top: 15%;
-      margin-left: 70%;
+
+    @include keyframes(gravity) {
+      to {
+        @include transform(translateY($gravity));
+        opacity: 0;
+      }
     }
-    60%,
-    79.9% {
-      margin-top: 15%;
-      margin-left: 20%;
-    }
-    80%,
-    99.9% {
-      margin-top: 15%;
-      margin-left: 80%;
+
+    @include keyframes(position) {
+      0%,
+      19.9% {
+        margin-top: 15%;
+        margin-left: 40%;
+      }
+      20%,
+      39.9% {
+        margin-top: 15%;
+        margin-left: 30%;
+      }
+      40%,
+      59.9% {
+        margin-top: 15%;
+        margin-left: 70%;
+      }
+      60%,
+      79.9% {
+        margin-top: 15%;
+        margin-left: 20%;
+      }
+      80%,
+      99.9% {
+        margin-top: 15%;
+        margin-left: 80%;
+      }
     }
   }
 }
